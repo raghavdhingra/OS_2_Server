@@ -1,6 +1,6 @@
 # OS-2-Server
 
-Email: mailto:admin@raghavdhingra.com
+Email: admin@raghavdhingra.com
 
 Development Server: https://portfolio-os-server.herokuapp.com
 
