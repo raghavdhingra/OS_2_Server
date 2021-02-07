@@ -6,10 +6,12 @@ import json
 from .models import *
 from .serializer import *
 from django.core.mail import send_mail
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 # Create your views here.
 
 
+@xframe_options_exempt
 def portfolio(request):
     context = {
         "projects": Project.objects.all().order_by("-id")[:3],
@@ -44,6 +46,37 @@ def submitForm(request):
     return redirect('/')
 
 
+class DscForm(APIView):
+    def post(self, request):
+        body = json.loads(request.body.decode('utf-8'))
+        name = body["name"]
+        email = body["email"]
+        query = body["query"]
+        html_format = "Name: {} \nEmail: {} \nQuery: {}".format(
+            name, email, query)
+        try:
+            send_mail(
+                str(name),
+                str(html_format),
+                'admin@raghavdhingra.com',
+                ['dsc.gtbit@gmail.com'],
+                fail_silently=False,
+            )
+            send_mail(
+                "DSC Query Submitted",
+                "We have recieved your query. We'll be responding to you soon. \nThanks",
+                'admin@raghavdhingra.com',
+                [email],
+                fail_silently=False,
+            )
+            return JsonResponse({"message": "SUCCESS"})
+
+        except Exception as e:
+            print(e)
+            return JsonResponse({"message": "FAILURE"})
+
+
+@xframe_options_exempt
 def projects(request):
     context = {
         "title": "Raghav Dhingra | Projects | Portfolio.OS",
