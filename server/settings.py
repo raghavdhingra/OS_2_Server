@@ -141,10 +141,6 @@ STATICFILES_DIRS = (
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtpout.secureserver.net'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'admin@raghavdhingra.com'
-EMAIL_HOST_PASSWORD = 'Facebook1.'
-# EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'admin@raghavdhingra.com'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
