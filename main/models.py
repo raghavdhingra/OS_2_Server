@@ -40,10 +40,13 @@ class Experience(models.Model):
 
 class Education(models.Model):
     institute_name = models.CharField(blank=True, null=True, default='',max_length=200)
+    institute_link = models.CharField(blank=True, null=True, default='',max_length=200)
+    designation = models.CharField(blank=True, null=True, default='',max_length=200)
     from_date = models.DateField(null=True, blank=True, default=date.today)
     to_date = models.DateField(null=True, blank=True, default=date.today)
     description = models.TextField(blank=True, null=True, default='')
     gpa = models.IntegerField(blank=True, null=True, default=0)
+    percentage = models.IntegerField(blank=True, null=True, default=0)
 
     def __str__(self):
         return self.company_name
