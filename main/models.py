@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from datetime import date
 
 # Create your models here.
 
@@ -22,6 +23,17 @@ class Testimonial(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Experience(models.Model):
+    company_name = models.TextField(blank=True, null=True, default='')
+    designation = models.TextField(blank=True, null=True, default='')
+    from_date = models.DateField(null=True, blank=True, default=date.today)
+    to_date = models.DateField(null=True, blank=True, default=date.today)
+    description = models.TextField(blank=True, null=True, default='')
+
+    def __str__(self):
+        return self.company_name
 
 
 class Project(models.Model):

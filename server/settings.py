@@ -138,9 +138,13 @@ STATICFILES_DIRS = (
 # WHITENOISE_ROOT = os.path.join(BASE_DIR, 'static')
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtpout.secureserver.net'
-EMAIL_PORT = 587
+EMAIL_BACKEND = env("EMAIL_BACKEND")
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_PORT = env("EMAIL_PORT")
+EMAIL_HOST_USER = env("EMAIL_ID")
+EMAIL_HOST_PASSWORD = env("EMAIL_PASS")
+# EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = env("EMAIL_ID")
 
 CORS_ORIGIN_ALLOW_ALL = True
 
