@@ -26,8 +26,8 @@ class Testimonial(models.Model):
 
 
 class Experience(models.Model):
-    company_name = models.TextField(blank=True, null=True, default='')
-    designation = models.TextField(blank=True, null=True, default='')
+    company_name = models.CharField(blank=True, null=True, default='',max_length=200)
+    designation = models.CharField(blank=True, null=True, default='',max_length=200)
     from_date = models.DateField(null=True, blank=True, default=date.today)
     to_date = models.DateField(null=True, blank=True, default=date.today)
     description = models.TextField(blank=True, null=True, default='')
