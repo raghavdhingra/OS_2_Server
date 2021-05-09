@@ -52,6 +52,16 @@ class Education(models.Model):
         return self.institute_name
 
 
+class Achievements(models.Model):
+    title = models.CharField(blank=True, null=True, default='',max_length=200)
+    from_date = models.DateField(null=True, blank=True, default=date.today)
+    to_date = models.DateField(null=True, blank=True, default=date.today)
+    is_present = models.BooleanField(blank=True, null=True, default=False)
+
+    def __str__(self):
+        return self.title
+
+
 class Project(models.Model):
     name = models.CharField(blank=True, null=True,
                             max_length=200, default='Anonymous')

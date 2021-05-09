@@ -1623,7 +1623,7 @@
                                     </span>
                                   </div>
                                   <div class="body">
-                                    <h4 class="mt-0">{{exp.designation}} <span style="font-size: 0.9rem">at <a href="{{exp.company_website}}" target="_blank">{{exp.company_name}}</a></span></h4>
+                                    <h4 class="mt-0">{{exp.designation}} <span style="font-size: 0.9rem; font-weight: lighter;">at <a href="{{exp.company_website}}" target="_blank">{{exp.company_name}}</a></span></h4>
                                     <p>
                                       {{exp.description}}
                                     </p>
@@ -1631,6 +1631,92 @@
                                 </div>
                                 {% endfor %}
                                 
+                                <span class="timeline-line"></span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section
+                class="elementor-element elementor-element-6035891 shadow-blue elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section"
+                data-id="6035891"
+                data-element_type="section"
+                id="resume"
+                data-settings='{"background_background":"classic"}'
+              >
+                <div class="elementor-container elementor-column-gap-default">
+                  <div class="elementor-row">
+                    <div
+                      class="elementor-element elementor-element-622d1cb elementor-column elementor-col-100 elementor-top-column"
+                      data-id="622d1cb"
+                      data-element_type="column"
+                    >
+                      <div
+                        class="elementor-column-wrap elementor-element-populated"
+                      >
+                        <div class="elementor-widget-wrap">
+                          <div
+                            class="elementor-element elementor-element-2430684 elementor-widget elementor-widget-bako-section-title"
+                            data-id="2430684"
+                            data-element_type="widget"
+                            data-widget_type="bako-section-title.default"
+                          >
+                            <div class="elementor-widget-container">
+                              <h3 class="section-title">Achievements and Leadership</h3>
+                            </div>
+                          </div>
+                          <div
+                            class="elementor-element elementor-element-8c19699 elementor-widget elementor-widget-spacer"
+                            data-id="8c19699"
+                            data-element_type="widget"
+                            data-widget_type="spacer.default"
+                          >
+                            <div class="elementor-widget-container">
+                              <div class="elementor-spacer">
+                                <div class="elementor-spacer-inner"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="elementor-element elementor-element-dc80888 elementor-widget elementor-widget-bako-timeline"
+                            data-id="dc80888"
+                            data-element_type="widget"
+                            data-widget_type="bako-timeline.default"
+                          >
+                            <div class="elementor-widget-container">
+                              <div class="timeline">
+
+                                {% for edu in education %}
+                                <div class="entry">
+                                  <div class="title">
+                                    <span>
+                                        {{edu.from_date|date:"M Y"}} - {{edu.to_date|date:"M Y"}}
+                                    </span>
+                                  </div>
+                                  <div class="body">
+                                    <h4 class="mt-0">
+                                      {{edu.designation}}
+                                    </h4>
+                                    <p>
+                                        <a href="{{edu.institute_link}}" target="_blank">{{edu.institute_name}}</a>
+                                        <br/>
+                                        {{edu.description}}
+                                        <br/>
+                                        {% if edu.gpa %}
+                                        GPA: {{edu.gpa}}
+                                        {% elif edu.percentage %}
+                                        Percentage: {{edu.percentage}}
+                                        {% endif %}
+                                    </p>
+                                  </div>
+                                </div>
+                                {% endfor %}
+
                                 <span class="timeline-line"></span>
                               </div>
                             </div>
