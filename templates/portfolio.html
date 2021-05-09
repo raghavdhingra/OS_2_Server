@@ -1609,119 +1609,28 @@
                           >
                             <div class="elementor-widget-container">
                               <div class="timeline">
+
+                              {% for exp in experience %}
                                 <div class="entry">
                                   <div class="title">
-                                    <span>Apr, 2020 - Jun, 2020</span>
+                                    <span>
+                                        {{exp.from_date|date:"M Y"}} -
+                                        {% if exp.is_present %}
+                                            Present
+                                        {% else %}
+                                            {{exp.to_date|date:"M Y"}}
+                                        {% endif %}
+                                    </span>
                                   </div>
                                   <div class="body">
-                                    <h4 class="mt-0">Backend Developer</h4>
+                                    <h4 class="mt-0">{{exp.designation}} <span style="font-size: 0.9rem">at <a href="{{exp.company_website}}" target="_blank">{{exp.company_name}}</a></span></h4>
                                     <p>
-                                      Backend Developer at
-                                      <a
-                                        href="https://precisely.co.in/"
-                                        target="_blank"
-                                        >Tracknerd GPS</a
-                                      >
+                                      {{exp.description}}
                                     </p>
                                   </div>
                                 </div>
-                                <div class="entry">
-                                  <div class="title">
-                                    <span>Dec, 2019 - Aug, 2020</span>
-                                  </div>
-                                  <div class="body">
-                                    <h4 class="mt-0">Frontend Engineer</h4>
-                                    <p>
-                                      Frontend Engineer at
-                                      <a
-                                        href="https://precisely.co.in/"
-                                        target="_blank"
-                                        >Precisely</a
-                                      >
-                                    </p>
-                                  </div>
-                                </div>
-                                <div class="entry">
-                                  <div class="title">
-                                    <span>Aug, 2019 - Present</span>
-                                  </div>
-                                  <div class="body">
-                                    <h4 class="mt-0">Freelancer</h4>
-                                    <p>
-                                      Worked as a freelancer since August, 2019
-                                    </p>
-                                  </div>
-                                </div>
-                                <div class="entry">
-                                  <div class="title">
-                                    <span>Apr, 2019 - Aug, 2019</span>
-                                  </div>
-                                  <div class="body">
-                                    <h4 class="mt-0">
-                                      Full Stack Web Developer
-                                    </h4>
-                                    <p>
-                                      Full Stack Web Developer at Medicians (<a
-                                        href=""
-                                        target="_blank"
-                                        >dietitio.com</a
-                                      >)
-                                    </p>
-                                  </div>
-                                </div>
-                                <div class="entry">
-                                  <div class="title">
-                                    <span>Feb, 2019 - May, 2019</span>
-                                  </div>
-                                  <div class="body">
-                                    <h4 class="mt-0">
-                                      Computer Science Expert
-                                    </h4>
-                                    <p>
-                                      Computer Science Expert at
-                                      <a
-                                        href="https://www.chegg.com/"
-                                        target="_blank"
-                                        >Chegg.com</a
-                                      >
-                                    </p>
-                                  </div>
-                                </div>
-                                <div class="entry">
-                                  <div class="title">
-                                    <span>2018 - Present</span>
-                                  </div>
-                                  <div class="body">
-                                    <h4 class="mt-0">Bachelor’s Degree</h4>
-                                    <p>
-                                      Student at
-                                      <a
-                                        href="http://www.ipu.ac.in/"
-                                        target="_blank"
-                                        >Indraprastha University, New Delhi</a
-                                      >
-                                      pursuing Computer Science Bachelor's
-                                      Degree
-                                    </p>
-                                  </div>
-                                </div>
-                                <div class="entry">
-                                  <div class="title">
-                                    <span>2012 - 2015</span>
-                                  </div>
-                                  <div class="body">
-                                    <h4 class="mt-0">High School</h4>
-                                    <p>
-                                      Completed High School Education from
-                                      <a
-                                        href="http://www.stmaryspanipat.com/"
-                                        target="_blank"
-                                        >St. Mary's Convent Sr. Sec. School,
-                                        Panipat</a
-                                      >
-                                    </p>
-                                  </div>
-                                </div>
+                                {% endfor %}
+                                
                                 <span class="timeline-line"></span>
                               </div>
                             </div>
@@ -1781,24 +1690,32 @@
                           >
                             <div class="elementor-widget-container">
                               <div class="timeline">
+
+                                {% for edu in education %}
                                 <div class="entry">
                                   <div class="title">
-                                    <span>Feb, 2019 - May, 2019</span>
+                                    <span>
+                                        {{edu.from_date|date:"M Y"}} - {{edu.to_date|date:"M Y"}}
+                                    </span>
                                   </div>
                                   <div class="body">
                                     <h4 class="mt-0">
-                                      Computer Science Expert
+                                      {{edu.designation}}
                                     </h4>
                                     <p>
-                                      Computer Science Expert at
-                                      <a
-                                        href="https://www.chegg.com/"
-                                        target="_blank"
-                                        >Chegg.com</a
-                                      >
+                                        <a href="{{edu.institute_link}}" target="_blank">{{edu.institute_name}}</a>
+                                        <br/>
+                                        {{edu.description}}
+                                        <br/>
+                                        {% if edu.gpa %}
+                                        GPA: {{edu.gpa}}
+                                        {% elif edu.percentage %}
+                                        Percentage: {{edu.percentage}}
+                                        {% endif %}
                                     </p>
                                   </div>
                                 </div>
+                                {% endfor %}
 
                                 <span class="timeline-line"></span>
                               </div>

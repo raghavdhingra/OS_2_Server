@@ -49,7 +49,7 @@ class Education(models.Model):
     percentage = models.DecimalField(blank=True, null=True, default=0,max_digits = 5,decimal_places = 2)
 
     def __str__(self):
-        return self.company_name
+        return self.institute_name
 
 
 class Project(models.Model):

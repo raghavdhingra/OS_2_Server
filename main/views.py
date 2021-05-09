@@ -17,6 +17,8 @@ def portfolio(request):
         "projects": Project.objects.all().order_by("-id")[:3],
         "title": "Raghav Dhingra | Portfolio Profile | Portfolio.OS",
         "testimonials": Testimonial.objects.all(),
+        "education": Education.objects.all().order_by("-id"),
+        "experience": Experience.objects.all().order_by("-id"),
     }
     return render(request, 'portfolio.html', context)
 
