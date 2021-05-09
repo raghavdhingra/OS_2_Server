@@ -45,8 +45,8 @@ class Education(models.Model):
     from_date = models.DateField(null=True, blank=True, default=date.today)
     to_date = models.DateField(null=True, blank=True, default=date.today)
     description = models.TextField(blank=True, null=True, default='')
-    gpa = models.IntegerField(blank=True, null=True, default=0)
-    percentage = models.IntegerField(blank=True, null=True, default=0)
+    gpa = models.DecimalField(blank=True, null=True, default=0,max_digits = 5,decimal_places = 2)
+    percentage = models.DecimalField(blank=True, null=True, default=0,max_digits = 5,decimal_places = 2)
 
     def __str__(self):
         return self.company_name
