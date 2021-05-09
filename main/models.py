@@ -27,10 +27,23 @@ class Testimonial(models.Model):
 
 class Experience(models.Model):
     company_name = models.CharField(blank=True, null=True, default='',max_length=200)
+    company_website = models.CharField(blank=True, null=True, default='',max_length=500)
     designation = models.CharField(blank=True, null=True, default='',max_length=200)
     from_date = models.DateField(null=True, blank=True, default=date.today)
     to_date = models.DateField(null=True, blank=True, default=date.today)
     description = models.TextField(blank=True, null=True, default='')
+    is_present = models.BooleanField(blank=True, null=True, default=False)
+
+    def __str__(self):
+        return self.company_name
+
+
+class Education(models.Model):
+    institute_name = models.CharField(blank=True, null=True, default='',max_length=200)
+    from_date = models.DateField(null=True, blank=True, default=date.today)
+    to_date = models.DateField(null=True, blank=True, default=date.today)
+    description = models.TextField(blank=True, null=True, default='')
+    gpa = models.IntegerField(blank=True, null=True, default=0)
 
     def __str__(self):
         return self.company_name
