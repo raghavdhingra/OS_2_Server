@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'd=&(u00vt^3o024!umj!^opkxmnyoe#8_qv$l(gd2hv*_r&3hw'
+SECRET_KEY = env("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -79,12 +83,12 @@ WSGI_APPLICATION = 'server.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd6l7fhdp6i7bg8',
-        'USER': 'uclnqpstxocyep',
-        'HOST': 'ec2-34-225-162-157.compute-1.amazonaws.com',
-        'PASSWORD': 'd56a7e647509afb265e1fc8f8e821134fa3947f4ab7bd69fb282896439fec7e4',
-        'PORT': '5432',
+        'ENGINE': env("DATABASE_ENGINE"),
+        'NAME': env("DATABASE_NAME"),
+        'USER': env("DATABASE_USER"),
+        'HOST': env("DATABASE_HOST"),
+        'PASSWORD': env("DATABASE_PASSWORD"),
+        'PORT': env("DATABASE_PORT"),
     }
 }
 
@@ -126,22 +130,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 # WHITENOISE_ROOT = os.path.join(BASE_DIR, 'static')
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtpout.secureserver.net'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'admin@raghavdhingra.com'
-EMAIL_HOST_PASSWORD = 'Facebook1.'
+EMAIL_BACKEND = env("EMAIL_BACKEND")
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_PORT = env("EMAIL_PORT")
+EMAIL_HOST_USER = env("EMAIL_ID")
+EMAIL_HOST_PASSWORD = env("EMAIL_PASS")
 # EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'admin@raghavdhingra.com'
-
+DEFAULT_FROM_EMAIL = env("EMAIL_ID")
 
 CORS_ORIGIN_ALLOW_ALL = True
 

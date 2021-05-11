@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from datetime import date
 
 # Create your models here.
 
@@ -22,6 +23,44 @@ class Testimonial(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Experience(models.Model):
+    company_name = models.CharField(blank=True, null=True, default='',max_length=200)
+    company_website = models.CharField(blank=True, null=True, default='',max_length=500)
+    designation = models.CharField(blank=True, null=True, default='',max_length=200)
+    from_date = models.DateField(null=True, blank=True, default=date.today)
+    to_date = models.DateField(null=True, blank=True, default=date.today)
+    description = models.TextField(blank=True, null=True, default='')
+    is_present = models.BooleanField(blank=True, null=True, default=False)
+
+    def __str__(self):
+        return self.company_name
+
+
+class Education(models.Model):
+    institute_name = models.CharField(blank=True, null=True, default='',max_length=200)
+    institute_link = models.CharField(blank=True, null=True, default='',max_length=200)
+    designation = models.CharField(blank=True, null=True, default='',max_length=200)
+    from_date = models.DateField(null=True, blank=True, default=date.today)
+    to_date = models.DateField(null=True, blank=True, default=date.today)
+    description = models.TextField(blank=True, null=True, default='')
+    gpa = models.DecimalField(blank=True, null=True, default=0,max_digits = 5,decimal_places = 2)
+    percentage = models.DecimalField(blank=True, null=True, default=0,max_digits = 5,decimal_places = 2)
+
+    def __str__(self):
+        return self.institute_name
+
+
+class Achievements(models.Model):
+    title = models.CharField(blank=True, null=True, default='',max_length=200)
+    description = models.TextField(blank=True, null=True, default='')
+    from_date = models.DateField(null=True, blank=True, default=date.today)
+    to_date = models.DateField(null=True, blank=True, default=date.today)
+    is_present = models.BooleanField(blank=True, null=True, default=False)
+
+    def __str__(self):
+        return self.title
 
 
 class Project(models.Model):
