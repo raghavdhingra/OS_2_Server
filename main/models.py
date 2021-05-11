@@ -54,6 +54,7 @@ class Education(models.Model):
 
 class Achievements(models.Model):
     title = models.CharField(blank=True, null=True, default='',max_length=200)
+    description = models.TextField(blank=True, null=True, default='')
     from_date = models.DateField(null=True, blank=True, default=date.today)
     to_date = models.DateField(null=True, blank=True, default=date.today)
     is_present = models.BooleanField(blank=True, null=True, default=False)
