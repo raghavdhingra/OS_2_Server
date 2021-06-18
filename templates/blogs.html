@@ -75,7 +75,7 @@
     <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://pxltheme.xyz/wp/bako/xmlrpc.php?rsd" />
     <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://pxltheme.xyz/wp/bako/wp-includes/wlwmanifest.xml" />
     <meta name="generator" content="WordPress 5.1.3" />
-    <link rel="canonical" href="https://raghavdhingra.com/projects" />
+    <link rel="canonical" href="https://raghavdhingra.com/blogs" />
     <link rel='shortlink' href='#' />
     <link rel="alternate" type="application/json+oembed" href="https://pxltheme.xyz/wp/bako/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fpxltheme.xyz%2Fwp%2Fbako%2F" />
     <link rel="alternate" type="text/xml+oembed" href="https://pxltheme.xyz/wp/bako/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fpxltheme.xyz%2Fwp%2Fbako%2F&#038;format=xml" />
@@ -98,39 +98,36 @@
                     <div class="elementor-section-wrap">
                         <section class="projects-r-section">
                             <div class="elementor-widget-container">
-                                <h3 class="section-title">My Projects</h3>
+                                <h3 class="section-title">My Blogs</h3>
                             </div>
                             <br/>
                             <br/>
                             <ul class="portfolio-filter list-inline">
-                                <li class="current list-inline-item" data-filter="*">All Projects</li>
+                                <li class="current list-inline-item" data-filter="*">All Blogs</li>
                             </ul>
                             <div class="pf-filter-wrapper mb-4">
                                 <select class="portfolio-filter-mobile">
-                                    <option value="*">All Projects</option>
+                                    <option value="*">All Blogs</option>
                                 </select>
                             </div>
                             <br/>
                             <div>
                                 <div class="portfolio-r-wrapper">  
-                                    {% for project in projects %}
-                                    {% if project.show == True %}
+                                    {% for blog in blogs %}
                                     <div class="grid-item branding creative">
-                                        <a href="{{project.link}}" target="_blank">
+                                        <a href="{{blog.link}}" target="_blank">
                                             <div class="portfolio-item">
                                                 <div class="details">
-                                                    <h4 class="title"> {{project.name}} </h4> 
-                                                    <span class='term'> {{project.website}} </span>
+                                                    <h4 class="title"> {{blog.title}} </h4> 
                                                 </div>
                                                 <span class="plus-icon">+</span>
                                                 <div class="thumb">
-                                                    <noscript><img width="420" height="315" src="{{project.image}}" class="attachment-425x315 size-425x315 wp-post-image" alt="{{project.name}}" srcset="{{project.image}}" sizes="(max-width: 420px) 100vw, 420px' %}" /></noscript><img width="420" height="315" src='data:image/svg+xml,%3Csvg%20xmlns=%22https://www.w3.org/2000/svg%22%20viewBox=%220%200%20420%20315%22%3E%3C/svg%3E' data-src="{{project.image}}" class="lazyload attachment-425x315 size-425x315 wp-post-image" alt="{{project.name}}" data-srcset="{{project.image}}" sizes="(max-width: 420px) 100vw, 420px" />
+                                                    <noscript><img width="420" height="315" src="{{blog.image}}" class="attachment-425x315 size-425x315 wp-post-image" alt="{{blog.title}}" srcset="{{blog.image}}" sizes="(max-width: 420px) 100vw, 420px' %}" /></noscript><img width="420" height="315" src='data:image/svg+xml,%3Csvg%20xmlns=%22https://www.w3.org/2000/svg%22%20viewBox=%220%200%20420%20315%22%3E%3C/svg%3E' data-src="{{blog.image}}" class="lazyload attachment-425x315 size-425x315 wp-post-image" alt="{{blog.title}}" data-srcset="{{blog.image}}" sizes="(max-width: 420px) 100vw, 420px" />
                                                     <div class="mask"></div>
                                                 </div>
                                             </div>
                                         </a>
                                     </div>
-                                    {% endif %}
                                     {% endfor %}
 
                                 </div>
@@ -158,7 +155,6 @@
                                                         <div class="row testimonials-wrapper">
                                                             
                                                             {% for testimonial in testimonials %}
-                                                            {% if testimonial.show == True %}
                                                             <div class="col-md-6">
                                                                 <div class="testimonial-item"> <span class="symbol"><i class="fas fa-quote-left"></i></span>
                                                                     <p> {{ testimonial.testimonial }} </p>
@@ -170,7 +166,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            {% endif %}
                                                             {% endfor %}
                                                             
                                                         </div>

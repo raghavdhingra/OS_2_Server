@@ -337,7 +337,6 @@
               >
                 <a href="#resume"><i class="icon-graduation"></i>Experience</a>
               </li>
-              <!-- <li id="menu-item-17" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="#works"><i class="icon-grid"></i>Works</a></li> -->
               <li
                 id="menu-item-18"
                 class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18"
@@ -386,7 +385,6 @@
                 </a>
               </li>
             </ul>
-            <!-- <span class="copyright"> © 2019 Bako Theme </span> -->
           </div>
         </div>
       </header>
@@ -2187,6 +2185,7 @@
                           >
                             <div class="elementor-widget-container">
                               <div class="row">
+                                {% for blog in blogs %}
                                 <div class="col-md-4">
                                   <div class="blog-item">
                                     <div class="thumb">
@@ -2194,57 +2193,55 @@
                                         href="https://medium.com/@raghav.dhingra15/immutable-data-structures-for-functional-javascript-ab825e724a5a"
                                         target="_blank"
                                         ><span class="category"
-                                          >Thoughts</span
+                                          >{{blog.category}}</span
                                         ></a
                                       >
                                       <a
-                                        href="https://medium.com/@raghav.dhingra15/immutable-data-structures-for-functional-javascript-ab825e724a5a"
+                                        href="{{blog.link}}"
                                         target="_blank"
                                       >
-                                        <noscript
-                                          ><img
-                                            width="243"
-                                            height="182"
-                                            src="{% static 'profile/assets/images/immutable.jpg' %}"
-                                            class="attachment-245x182 size-245x182 wp-post-image"
-                                            alt="Immutable Js"
-                                            srcset="{% static 'profile/assets/images/immutable.jpg' %}"
-                                            sizes="(max-width: 243px) 100vw, 243px" /></noscript
-                                        ><img
+                                        <img
                                           width="243"
                                           height="182"
                                           src="data:image/svg+xml,%3Csvg%20xmlns=%22https://www.w3.org/2000/svg%22%20viewBox=%220%200%20243%20182%22%3E%3C/svg%3E"
-                                          data-src="{% static 'profile/assets/images/immutable.jpg' %}"
-                                          class="lazyload attachment-245x182 size-245x182 wp-post-image"
-                                          alt="Immutable js"
-                                          data-srcset="{% static 'profile/assets/images/immutable.jpg' %}"
+                                          data-src="{{blog.image}}"
+                                          class="lazyload attachment-245x182 size-245x182 wp-post-image wp-image-center"
+                                          alt="{{blog.title}}"
+                                          data-srcset="{{blog.title}}"
                                           sizes="(max-width: 243px) 100vw, 243px"
                                       /></a>
                                     </div>
                                     <h4 class="mt-4 mb-0">
                                       <a
-                                        href="https://medium.com/@raghav.dhingra15/immutable-data-structures-for-functional-javascript-ab825e724a5a"
+                                        href="{{blog.link}}"
                                         target="_blank"
-                                        >IMMUTABLE DATA STRUCTURES FOR
-                                        FUNCTIONAL JAVASCRIPT</a
+                                        >{{blog.title}}</a
                                       >
                                     </h4>
                                     <ul class="list-inline meta mb-0 mt-3">
                                       <li class="list-inline-item">
-                                        25 Sept, 2018
+                                        {{blog.date}}
                                       </li>
                                       <li class="list-inline-item">
                                         <a
-                                          href="https://medium.com/@raghav.dhingra15/immutable-data-structures-for-functional-javascript-ab825e724a5a"
+                                          href="{{blog.link}}"
                                           target="_blank"
                                           title="Posts by Raghav Dhingra"
                                           rel="author"
-                                          >Raghav Dhingra</a
+                                          >{{blog.author}}</a
                                         >
                                       </li>
                                     </ul>
                                   </div>
                                 </div>
+                                {% endfor %}
+                              </div>
+                              <br/>
+                              <br/>
+                              <div class="row">
+                                <a href="{% url 'blogs' %}" class="btn btn-default"
+                                  >See all Blog Post</a
+                                >
                               </div>
                             </div>
                           </div>

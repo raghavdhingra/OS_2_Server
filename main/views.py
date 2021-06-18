@@ -20,6 +20,7 @@ def portfolio(request):
         "education": Education.objects.all().order_by("-id"),
         "experience": Experience.objects.all().order_by("-id"),
         "achievements": Achievements.objects.all().order_by("-id"),
+        "blogs": Blogs.objects.all().order_by("-id")[:3],
     }
     return render(request, 'portfolio.html', context)
 
@@ -87,6 +88,15 @@ def projects(request):
         "projects": Project.objects.all().order_by("-id"),
     }
     return render(request, 'projects.html', context)
+
+@xframe_options_exempt
+def blogs(request):
+    context = {
+        "title": "Raghav Dhingra | Projects | Portfolio.OS",
+        "testimonials": Testimonial.objects.all(),
+        "blogs": Blogs.objects.all().order_by("-id"),
+    }
+    return render(request, 'blogs.html', context)
 
 
 def whatsapp(request):

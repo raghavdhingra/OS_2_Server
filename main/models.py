@@ -52,6 +52,18 @@ class Education(models.Model):
         return self.institute_name
 
 
+class Blogs(models.Model):
+    title = models.CharField(blank=True, null=True, default='',max_length=200)
+    link = models.CharField(blank=True, null=True, default='',max_length=500)
+    image = models.CharField(blank=True, null=True, default='',max_length=500)
+    date = models.DateField(null=True, blank=True, default=date.today)
+    author = models.CharField(blank=True, null=True, default='',max_length=200)
+    category = models.CharField(blank=True, null=True, default='',max_length=200)
+
+    def __str__(self):
+        return self.title
+
+
 class Achievements(models.Model):
     title = models.CharField(blank=True, null=True, default='',max_length=200)
     description = models.TextField(blank=True, null=True, default='')

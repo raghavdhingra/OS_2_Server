@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', mainView.portfolio, name="portfolio"),
     path('projects', mainView.projects, name="projects"),
+    path('blogs', mainView.blogs, name="blogs"),
     path('submitForm', mainView.submitForm, name="submitForm"),
     path('whatsapp', mainView.whatsapp, name="whatsapp"),
     path('facebook', mainView.facebook, name="facebook"),
