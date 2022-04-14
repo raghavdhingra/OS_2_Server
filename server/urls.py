@@ -19,6 +19,7 @@ from django.urls import path
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.sitemaps import views
 from main import views as mainView
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -44,3 +45,5 @@ urlpatterns = [
     path('api/v1/testimonials', mainView.AllTestimonials.as_view()),
     path('dsc-mail', mainView.DscForm.as_view()),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
