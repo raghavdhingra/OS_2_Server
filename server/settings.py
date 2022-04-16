@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import django_heroku
-import psycopg2
+#import django_heroku
+#import psycopg2
 import dj_database_url
 import environ
 
@@ -30,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -135,12 +135,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
+        os.path.join(BASE_DIR, 'staticfiles'),
 )
 
 WHITENOISE_ROOT = os.path.join(BASE_DIR, 'static')
 
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
 
 
 # WHITENOISE_ROOT = os.path.join(BASE_DIR, 'static')
