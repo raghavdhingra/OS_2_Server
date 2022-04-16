@@ -14,12 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.views.generic import TemplateView
 from django.urls import path
-from django.contrib.sitemaps.views import sitemap
-from django.contrib.sitemaps import views
+from django.conf import settings
+from django.conf.urls.static import static
 from main import views as mainView
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -44,6 +42,4 @@ urlpatterns = [
     path('api/v1/projects', mainView.AllProjects.as_view()),
     path('api/v1/testimonials', mainView.AllTestimonials.as_view()),
     path('dsc-mail', mainView.DscForm.as_view()),
-]
-
-urlpatterns += staticfiles_urlpatterns()
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
