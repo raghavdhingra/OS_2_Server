@@ -33,13 +33,14 @@ def submitForm(request):
         message = request.POST.get("message")
         html_format = " Name: {} \n Subject: {} \n Email: {} \n Message: {}".format(
             name, subject, email, message)
+        print(html_format)
         try:
             send_mail(
                 str(subject),
                 str(html_format),
                 'admin@raghavdhingra.com',
                 ['admin@raghavdhingra.com', email],
-                fail_silently=False,
+                fail_silently=True,
             )
             return redirect("/")
 
