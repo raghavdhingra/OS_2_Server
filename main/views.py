@@ -40,7 +40,7 @@ def submitForm(request):
                 str(html_format),
                 'admin@raghavdhingra.com',
                 ['admin@raghavdhingra.com', email],
-                fail_silently=True,
+                fail_silently=False,
             )
             return redirect("/")
 
