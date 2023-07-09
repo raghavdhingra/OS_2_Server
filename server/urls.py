@@ -39,7 +39,7 @@ urlpatterns = [
     path('phone', mainView.mobile, name="phone"),
     path('message', mainView.mobile, name="message"),
     path('mobile', mainView.mobile, name="mobile"),
-    # path('api/v1/projects', mainView.AllProjects.as_view()),
-    # path('api/v1/testimonials', mainView.AllTestimonials.as_view()),
+    path('api/v1/projects', mainView.AllProjects.as_view()),
+    path('api/v1/testimonials', mainView.AllTestimonials.as_view()),
     path('dsc-mail', mainView.DscForm.as_view()),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

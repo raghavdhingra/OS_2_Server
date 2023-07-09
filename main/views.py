@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
-# from rest_framework.response import Response
+from rest_framework.response import Response
 from rest_framework.views import APIView
 import json
 from .models import *
@@ -146,23 +146,23 @@ def mobile(request):
     return render(request, "phone.html", context)
 
 
-# class AllProjects(APIView):
+class AllProjects(APIView):
 
-#     def get(self, request):
-#         context = {
-#             "projects": ProjectSerializer(Project.objects.all().order_by("-id"), many=True).data,
-#             "message": "Project fetched successfully",
-#             "status": "success"
-#         }
-#         return Response(context, status=200)
+    def get(self, request):
+        context = {
+            "projects": ProjectSerializer(Project.objects.all().order_by("-id"), many=True).data,
+            "message": "Project fetched successfully",
+            "status": "success"
+        }
+        return Response(context, status=200)
 
 
-# class AllTestimonials(APIView):
+class AllTestimonials(APIView):
 
-#     def get(self, request):
-#         context = {
-#             "projects": TestimonialSerializer(Testimonial.objects.all().order_by("-id"), many=True).data,
-#             "message": "Testimonials fetched successfully",
-#             "status": "success"
-#         }
-#         return Response(context, status=200)
+    def get(self, request):
+        context = {
+            "projects": TestimonialSerializer(Testimonial.objects.all().order_by("-id"), many=True).data,
+            "message": "Testimonials fetched successfully",
+            "status": "success"
+        }
+        return Response(context, status=200)
