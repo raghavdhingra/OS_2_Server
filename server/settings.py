@@ -11,13 +11,13 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
 #import django_heroku
 #import psycopg2
 import dj_database_url
-import environ
 
-env = environ.Env()
-environ.Env.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,10 +27,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("DJANGO_SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -86,12 +86,8 @@ WSGI_APPLICATION = 'server.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': env("DATABASE_ENGINE"),
-        'NAME': env("DATABASE_NAME"),
-        'USER': env("DATABASE_USER"),
-        'HOST': env("DATABASE_HOST"),
-        'PASSWORD': env("DATABASE_PASSWORD"),
-        'PORT': env("DATABASE_PORT"),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': "mydatabase",
     }
 }
 
@@ -145,14 +141,13 @@ WHITENOISE_ROOT = os.path.join(BASE_DIR, 'static')
 
 # WHITENOISE_ROOT = os.path.join(BASE_DIR, 'static')
 
-
-EMAIL_BACKEND = env("EMAIL_BACKEND")
-EMAIL_HOST = env("EMAIL_HOST")
-EMAIL_PORT = env("EMAIL_PORT")
-EMAIL_HOST_USER = env("EMAIL_ID")
-EMAIL_HOST_PASSWORD = env("EMAIL_PASS")
+EMAIL_BACKEND = os.getenv("EMAIL_BACKEND")
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = os.getenv("EMAIL_PORT")
+EMAIL_HOST_USER = os.getenv("EMAIL_ID")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASS")
 EMAIL_USE_SSL = True
-DEFAULT_FROM_EMAIL = env("EMAIL_ID")
+DEFAULT_FROM_EMAIL = os.getenv("EMAIL_ID")
 
 CORS_ORIGIN_ALLOW_ALL = True
 
