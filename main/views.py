@@ -14,7 +14,7 @@ from django.views.decorators.clickjacking import xframe_options_exempt
 @xframe_options_exempt
 def portfolio(request):
     context = {
-        "projects": Project.objects.all().order_by("-id")[:3],
+        "projects": Project.objects.all().order_by("-created_on")[:3],
         "title": "Raghav Dhingra | Portfolio Profile | Portfolio.OS",
         "testimonials": Testimonial.objects.all().order_by("-created_on"),
         "education": Education.objects.all().order_by("-from_date"),
