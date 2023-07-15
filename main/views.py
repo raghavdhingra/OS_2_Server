@@ -20,7 +20,7 @@ def portfolio(request):
         "education": Education.objects.all().order_by("-from_date"),
         "experience": Experience.objects.all().order_by("-to_date"),
         "achievements": Achievements.objects.all().order_by("-to_date"),
-        "blogs": Blogs.objects.all().order_by("-id")[:3],
+        "blogs": Blogs.objects.all().order_by("-date")[:3],
     }
     return render(request, 'portfolio.html', context)
 
@@ -86,7 +86,7 @@ def projects(request):
     context = {
         "title": "Raghav Dhingra | Projects | Portfolio.OS",
         "testimonials": Testimonial.objects.all(),
-        "projects": Project.objects.all().order_by("-id"),
+        "projects": Project.objects.all().order_by("-created_on"),
     }
     return render(request, 'projects.html', context)
 
@@ -95,7 +95,7 @@ def blogs(request):
     context = {
         "title": "Raghav Dhingra | Projects | Portfolio.OS",
         "testimonials": Testimonial.objects.all(),
-        "blogs": Blogs.objects.all().order_by("-id"),
+        "blogs": Blogs.objects.all().order_by("-date"),
     }
     return render(request, 'blogs.html', context)
 
