@@ -16,10 +16,10 @@ def portfolio(request):
     context = {
         "projects": Project.objects.all().order_by("-id")[:3],
         "title": "Raghav Dhingra | Portfolio Profile | Portfolio.OS",
-        "testimonials": Testimonial.objects.all(),
-        "education": Education.objects.all().order_by("-id"),
-        "experience": Experience.objects.all().order_by("-id"),
-        "achievements": Achievements.objects.all().order_by("-id"),
+        "testimonials": Testimonial.objects.all().order_by("-created_on"),
+        "education": Education.objects.all().order_by("-from_date"),
+        "experience": Experience.objects.all().order_by("-to_date"),
+        "achievements": Achievements.objects.all().order_by("-to_date"),
         "blogs": Blogs.objects.all().order_by("-id")[:3],
     }
     return render(request, 'portfolio.html', context)
